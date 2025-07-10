@@ -1,5 +1,5 @@
 function instructionPage() {
-  window.location.href = "index.html?skipSplash=true"; // 👈 add flag
+  window.location.href = "index.html";
 }
 
 const goBackBtn = document.querySelector(".back");
