@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  font-family: "Arial Rounded MT Bold", "Arial", sans-serif;
+  background-color: #FFCB59;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.splash-screen {
+  position: absolute;
+  inset: 0; /* same as setting top, right, bottom, left to 0 */
+  background-image: url("../assets/eggs-bg.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOutSplashScreen 5s forwards;
+  z-index: 2;
+}
+
+@keyframes fadeOutSplashScreen {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.app {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  background-color: #FFCB59;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.app__title {
+  text-align: center;
+  color: black;
+  font-size: 35px;
+  margin-bottom: 30px;
+  font-family: "Rammetto One", sans-serif;
+}
+
+.btn {
+  display: block;
+  margin: 25px auto 0;
+  background-color: #FFCB59;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.btn:hover {
+  background-color: rgb(255, 187.0240963855, 38);
+}
+
+.hidden {
+  display: none;
+}
+
+.app__instruction-wrapper {
+  background-color: #fff3c2;
+  width: 80%;
+  border-radius: 20px;
+  padding: 1em;
+}
+
+.app__instruction-subtitle {
+  text-align: center;
+  font-size: 25px;
+  font-family: "Rammetto One", sans-serif;
+}
+
+ol {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  padding-left: 20px;
+}
+
+.app__menu-wrapper {
+  background-color: #fff3c2;
+  width: 100%;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.app__menu-subtitle {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Rammetto One", sans-serif;
+  margin-bottom: 20px;
+}
+
+.egg-menu-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+}
