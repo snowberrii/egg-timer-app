@@ -11,6 +11,7 @@ body {
 .container {
   position: relative;
   height: 100vh;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -73,13 +74,8 @@ body {
   background-color: rgb(255, 187.0240963855, 38);
 }
 
-.hidden {
-  display: none;
-}
-
 .app__instruction-wrapper {
   background-color: #fff3c2;
-  width: 80%;
   border-radius: 20px;
   padding: 1em;
 }
@@ -99,9 +95,8 @@ ol {
 
 .app__menu-wrapper {
   background-color: #fff3c2;
-  width: 100%;
   border-radius: 20px;
-  padding: 1rem;
+  padding: 1em 3.5em;
 }
 
 .app__menu-subtitle {
