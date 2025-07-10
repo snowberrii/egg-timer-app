@@ -63,15 +63,21 @@ body {
   display: block;
   margin: 25px auto 0;
   background-color: #FFCB59;
+  color: #333 !important;
+  text-decoration: none !important;
   border: 2px solid #333;
   border-radius: 12px;
   padding: 10px 20px;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
 }
-.btn:hover {
+.btn:link, .btn:visited, .btn:hover, .btn:focus, .btn:active {
   background-color: rgb(255, 187.0240963855, 38);
+  outline: none;
+  color: #333 !important;
+  text-decoration: none !important;
 }
 
 .app__instruction-wrapper {
