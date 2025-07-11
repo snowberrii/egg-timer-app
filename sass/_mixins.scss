@@ -1,0 +1,20 @@
+// Mixins
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin app-wrapper-style($padding: 1em) {
+  background-color: $app-bg-color;
+  border-radius: 20px;
+  padding: $padding;
+  margin: 0 1em;
+}
+
+@mixin app-subtitle-style($font-size: 30px) {
+  text-align: center;
+  font-size: $font-size;
+  font-family: $font-title;
+}
