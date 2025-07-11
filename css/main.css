@@ -139,3 +139,7 @@ ol {
   font-family: "Rammetto One", sans-serif;
   margin-top: 1em;
 }
+
+.egg-option {
+  cursor: pointer;
+}
