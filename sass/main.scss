@@ -1,7 +1,6 @@
 @import "variables";
 @import "mixins";
 
-
 // ----- * BODY * ----- //
 body {
   margin: 0;
@@ -126,4 +125,16 @@ ol {
   font-size: 14px;
   font-weight: bold;
   padding: 0 3em;
+}
+
+// ----- * TIMER PAGE * ----- //
+.app__timer-subtitle {
+  @include app-subtitle-style(28px);
+  margin: 2em;
+}
+
+.app__countdown-timer {
+  font-size: 50px;
+  font-family: $font-title;
+  margin-top: 0.5em;
 }
