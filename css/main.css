@@ -115,7 +115,7 @@ ol {
   margin-bottom: 1.5em;
 }
 
-.egg-menu-options {
+.egg-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5em;
@@ -142,4 +142,33 @@ ol {
 
 .egg-option {
   cursor: pointer;
+}
+
+.app__timer-display {
+  margin-top: 0.2em;
+  text-align: center;
+  font-size: 50px;
+  font-family: "Rammetto One", sans-serif;
+}
+
+.back-to-menu-btn {
+  display: block;
+  margin: 1em auto;
+  background-color: #fff3c2;
+  font-size: 18px;
+  color: #333 !important;
+  text-decoration: none !important;
+  border: 2px solid #333;
+  border-radius: 2em;
+  padding: 0.8em 2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+}
+.back-to-menu-btn:link, .back-to-menu-btn:visited, .back-to-menu-btn:hover, .back-to-menu-btn:focus, .back-to-menu-btn:active {
+  background-color: rgb(255, 232.9672131148, 143);
+  outline: none;
+  color: #333 !important;
+  text-decoration: none !important;
 }

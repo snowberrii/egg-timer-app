@@ -18,3 +18,29 @@
   font-size: $font-size;
   font-family: $font-title;
 }
+
+@mixin buttonStyle($background-color: $body-bg-color) {
+  display: block;
+  margin: 1em auto;
+  background-color: $background-color;
+  font-size: 18px;
+  color: $text-color !important;
+  text-decoration: none !important;
+  border: 2px solid $text-color;
+  border-radius: 2em;
+  padding: 0.8em 2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent; // 🔧 Prevent iOS blue flash
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($background-color, 10%);
+    outline: none;
+    color: $text-color !important;
+    text-decoration: none !important;
+  }
+}

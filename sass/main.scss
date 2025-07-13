@@ -63,29 +63,7 @@ body {
 }
 
 .btn {
-  display: block;
-  margin: 1em auto;
-  background-color: $body-bg-color;
-  font-size: 18px;
-  color: $text-color !important;
-  text-decoration: none !important;
-  border: 2px solid $text-color;
-  border-radius: 2em;
-  padding: 0.8em 2em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  -webkit-tap-highlight-color: transparent; // 🔧 Prevent iOS blue flash
-  &:link,
-  &:visited,
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken($body-bg-color, 10%);
-    outline: none;
-    color: $text-color !important;
-    text-decoration: none !important;
-  }
+  @include buttonStyle;
 }
 
 // ----- * INSTRUCTION PAGE * ----- //
@@ -115,7 +93,7 @@ ol {
   margin-bottom: 1.5em;
 }
 
-.egg-menu-options {
+.egg-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5em;
@@ -141,4 +119,13 @@ ol {
 
 .egg-option {
   cursor: pointer;
+}
+
+.app__timer-display {
+  margin-top: 0.2em;
+  @include app-subtitle-style(50px);
+}
+
+.back-to-menu-btn {
+  @include buttonStyle($app-bg-color);
 }
