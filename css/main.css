@@ -155,7 +155,7 @@ ol {
   font-family: "Rammetto One", sans-serif;
 }
 
-.back-to-menu-btn {
+.start-over-btn {
   display: block;
   margin: 1em auto;
   background-color: #fff3c2;
@@ -170,7 +170,7 @@ ol {
   transition: background 0.3s ease-in-out;
   -webkit-tap-highlight-color: transparent;
 }
-.back-to-menu-btn:link, .back-to-menu-btn:visited, .back-to-menu-btn:hover, .back-to-menu-btn:focus, .back-to-menu-btn:active {
+.start-over-btn:link, .start-over-btn:visited, .start-over-btn:hover, .start-over-btn:focus, .start-over-btn:active {
   background-color: rgb(255, 232.9672131148, 143);
   outline: none;
   color: #333 !important;
