@@ -2,10 +2,8 @@
 // Source: https://freesound.org/s/428221/
 // License: Attribution 4.0 International (CC BY 4.0)
 
-
 const displayTimer = document.querySelector(".app__timer-display"); // display countdown time
 const timesUp = document.querySelector(".app__timer-subtitle"); // will display back to menu button after time is up
-const alarmSound = new Audio("../assets/alarm-sound.wav");
 
 const Timestored = localStorage.getItem("eggTime"); // get time that was previously stored when choosing the egg
 const minutes = parseInt(Timestored, 10); // change time string in dataset(time) to integer
