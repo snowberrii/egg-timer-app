@@ -1,22 +1,25 @@
+// ----- * Direct to instruction page * ----- //
 function instructionPage() {
   window.location.href = "index.html";
 }
 
 const goBackBtn = document.querySelector(".back");
-goBackBtn.addEventListener("click", instructionPage);
-
-
-function countdownPage() {
-  window.location.href = "timer.html";
+if (goBackBtn) {
+  goBackBtn.addEventListener("click", instructionPage);
 }
 
-const runnyYolk = document.querySelector("#runny-yolk");
-const softBoiled = document.querySelector("#soft-boiled");
-const mediumBoiled = document.querySelector("#medium-boiled");
-const hardBoiled = document.querySelector("#hard-boiled");
+// ----- * Direct to Countdown Timer after Choosing Egg option * ----- //
+const eggOptions = document.querySelectorAll(".egg-option");
 
+eggOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    const timeInMinutes = option.dataset.minutes;
 
-runnyYolk.addEventListener("click", countdownPage);
-softBoiled.addEventListener("click", countdownPage);
-mediumBoiled.addEventListener("click", countdownPage);
-hardBoiled.addEventListener("click", countdownPage);
+    if (timeInMinutes) {
+      localStorage.setItem("eggTime", timeInMinutes);
+      window.location.href = "timer.html";
+    } else {
+      alert("⚠️Something Went Wrong : Please Try Again Later");
+    }
+  });
+});
