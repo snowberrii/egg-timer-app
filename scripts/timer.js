@@ -24,10 +24,10 @@ const countdown = setInterval(() => {
   if (seconds <= 0) {
     clearInterval(countdown);
     timesUp.innerHTML = `Your egg is done.<br> Enjoy!`;
-    displayTimer.innerHTML = `<button class="back-to-menu-btn">Back to Menu</button>`;
+    displayTimer.innerHTML = `<button class="start-over-btn">Start Over</button>`;
     alarmSound.play(); // play sound when done
 
-    const backToMenuBtn = document.querySelector(".back-to-menu-btn");
+    const backToMenuBtn = document.querySelector(".start-over-btn");
     if (backToMenuBtn) {
       backToMenuBtn.addEventListener("click", () => {
         if (!alarmSound.paused) {
