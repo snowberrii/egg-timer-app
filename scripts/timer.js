@@ -4,9 +4,11 @@
 
 const displayTimer = document.querySelector(".app__timer-display"); // display countdown time
 const timesUp = document.querySelector(".app__timer-subtitle"); // will display back to menu button after time is up
+const alarmSound = new Audio("../assets/alarm-sound.wav"); // Preload sound
 
 const Timestored = localStorage.getItem("eggTime"); // get time that was previously stored when choosing the egg
 const minutes = parseInt(Timestored, 10); // change time string in dataset(time) to integer
+
 
 let seconds = minutes * 60;
 
@@ -17,6 +19,23 @@ displayTimer.textContent = `${initialMin}:${initialSec
   .toString()
   .padStart(2, "0")}`;
 
+// Try playing, fallback if blocked
+function playAlarm() {
+  const isUnlocked = sessionStorage.getItem("audioUnlocked");
+
+  // iOS or other browsers with restrictions
+  if (isUnlocked === "true") {
+    alarmSound.play().catch((err) => {
+      console.warn("Audio blocked:", err);
+    });
+  } else {
+    // Attempt anyway (desktop should allow it)
+    alarmSound.play().catch((err) => {
+      console.warn("Fallback audio failed:", err);
+    });
+  }
+}
+
 // Start countdown
 const countdown = setInterval(() => {
   seconds--;
@@ -25,7 +44,7 @@ const countdown = setInterval(() => {
     clearInterval(countdown);
     timesUp.innerHTML = `Your egg is done.<br> Enjoy!`;
     displayTimer.innerHTML = `<button class="start-over-btn">Start Over</button>`;
-    alarmSound.play(); // play sound when done
+    playAlarm();
 
     const backToMenuBtn = document.querySelector(".start-over-btn");
     if (backToMenuBtn) {
