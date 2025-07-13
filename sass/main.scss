@@ -88,7 +88,7 @@ ol {
 }
 
 .app__menu-subtitle {
-  @include app-subtitle-style(23px);
+  @include app-subtitle-style(20px);
   padding: 0 1em;
   margin-bottom: 1.5em;
 }
@@ -105,6 +105,14 @@ ol {
   padding: 0 1em;
 }
 
+.egg-option {
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
 // ----- * TIMER PAGE * ----- //
 .app__timer-subtitle {
   @include app-subtitle-style(28px);
@@ -115,14 +123,6 @@ ol {
   font-size: 60px;
   font-family: $font-title;
   margin-top: 1em;
-}
-
-.egg-option {
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
-  }
 }
 
 .app__timer-display {

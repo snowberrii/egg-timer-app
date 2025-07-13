@@ -1,54 +1,40 @@
-// Sound file: 2-Alarm.wav by Leoctiurs
-// Source: https://freesound.org/s/428221/
-// License: Attribution 4.0 International (CC BY 4.0)
+// Get DOM elements
+const display = document.querySelector(".app__timer-display"); // Countdown display
+const subtitle = document.querySelector(".app__timer-subtitle"); // Message when done
+const alarm = new Audio("../assets/alarm-sound.mp3"); // Alarm sound
 
-const displayTimer = document.querySelector(".app__timer-display");
-const timesUp = document.querySelector(".app__timer-subtitle");
-const alarmSound = new Audio("../assets/alarm-sound.mp3");
-
-// ✅ Only call this once — and using correct key
-function playAlarm() {
-  const allowSound = sessionStorage.getItem("allowSound");
-  if (allowSound === "true") {
-    alarmSound.play().catch((err) => {
-      console.warn("Audio play blocked:", err);
-    });
-  } else {
-    console.warn("Audio not allowed on this device/session.");
-  }
-}
-
-const storedTime = localStorage.getItem("eggTime");
-const minutes = parseInt(storedTime, 10);
+// Get the stored egg time in minutes and convert to seconds
+const minutes = parseInt(localStorage.getItem("eggTime"), 10);
 let seconds = minutes * 60;
 
-// ✅ Show timer right away
-displayTimer.textContent = `${minutes}:00`;
+// Show initial time immediately
+display.textContent = `${minutes}:00`;
 
-const countdown = setInterval(() => {
-  seconds--;
+// Start countdown every second
+const interval = setInterval(() => {
+  seconds--; // Decrease time by 1 second
 
-  if (seconds <= 0) {
-    clearInterval(countdown);
-
-    timesUp.innerHTML = `Your egg is done.<br> Enjoy!`;
-    displayTimer.innerHTML = `<button class="start-over-btn">Start Over</button>`;
-
-    playAlarm();
-
-    const restartBtn = document.querySelector(".start-over-btn");
-    if (restartBtn) {
-      restartBtn.addEventListener("click", () => {
-        alarmSound.pause();
-        alarmSound.currentTime = 0;
-        window.location.href = "index.html";
-      });
-    }
-
-    return;
-  }
-
+  // Convert seconds to mm:ss format
   const min = Math.floor(seconds / 60);
   const sec = seconds % 60;
-  displayTimer.textContent = `${min}:${sec.toString().padStart(2, "0")}`;
+  display.textContent = `${min}:${sec.toString().padStart(2, "0")}`;
+
+  // When time is up
+  if (seconds <= 0) {
+    clearInterval(interval); // Stop the countdown
+
+    // Show completion message and button
+    subtitle.innerHTML = `Your egg is done.<br> Enjoy!`;
+    display.innerHTML = `<button class="start-over-btn">Start Over</button>`;
+
+    // Play the alarm sound
+    alarm.play();
+
+    // Handle "Start Over" button click
+    document.querySelector(".start-over-btn").addEventListener("click", () => {
+      alarm.pause(); // Stop sound
+      alarm.currentTime = 0; // Reset sound
+      window.location.href = "index.html"; // Go back to menu
+    });
+  }
 }, 1000);

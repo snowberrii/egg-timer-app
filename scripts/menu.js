@@ -1,38 +1,26 @@
-// ----- * Direct to instruction page * ----- //
+// ----- * Go back to instruction page * ----- //
 function instructionPage() {
   window.location.href = "index.html";
 }
 
+// Find the back button and add click event
 const goBackBtn = document.querySelector(".back");
 if (goBackBtn) {
   goBackBtn.addEventListener("click", instructionPage);
 }
 
-// ----- * Direct to Countdown Timer after Choosing Egg option * ----- //
+// ----- * Handle egg option selection * ----- //
+
+// Select all egg option buttons (with data-minutes attribute)
 const eggOptions = document.querySelectorAll(".egg-option");
 
+// Loop through each option and add click event
 eggOptions.forEach((option) => {
   option.addEventListener("click", () => {
-    const timeInMinutes = option.dataset.minutes;
+    const timeInMinutes = option.dataset.minutes; // Get selected time
 
-    // Prime audio for iOS
-    const audio = new Audio("assets/alarm-sound.mp3");
-    audio
-      .play()
-      .then(() => {
-        audio.pause();
-        audio.currentTime = 0;
-        sessionStorage.setItem("allowSound", "true");
-      })
-      .catch(() => {
-        sessionStorage.setItem("allowSound", "false");
-      });
-
-    if (timeInMinutes) {
-      localStorage.setItem("eggTime", timeInMinutes);
-      window.location.href = "timer.html";
-    } else {
-      alert("⚠️ Something went wrong. Please try again.");
-    }
+    // Store time and go to timer page
+    localStorage.setItem("eggTime", timeInMinutes);
+    window.location.href = "timer.html";
   });
 });

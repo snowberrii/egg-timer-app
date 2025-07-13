@@ -109,7 +109,7 @@ ol {
 
 .app__menu-subtitle {
   text-align: center;
-  font-size: 23px;
+  font-size: 20px;
   font-family: "Rammetto One", sans-serif;
   padding: 0 1em;
   margin-bottom: 1.5em;
@@ -127,6 +127,14 @@ ol {
   padding: 0 1em;
 }
 
+.egg-option {
+  cursor: pointer;
+}
+.egg-option:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
 .app__timer-subtitle {
   text-align: center;
   font-size: 28px;
@@ -138,14 +146,6 @@ ol {
   font-size: 60px;
   font-family: "Rammetto One", sans-serif;
   margin-top: 1em;
-}
-
-.egg-option {
-  cursor: pointer;
-}
-.egg-option:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s ease-in-out;
 }
 
 .app__timer-display {
