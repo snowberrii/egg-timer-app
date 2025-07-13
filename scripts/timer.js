@@ -4,11 +4,10 @@
 
 const displayTimer = document.querySelector(".app__timer-display"); // display countdown time
 const timesUp = document.querySelector(".app__timer-subtitle"); // will display back to menu button after time is up
-const alarmSound = new Audio("../assets/alarm-sound.wav"); // Preload sound
+const alarmSound = new Audio("../assets/alarm-sound.mp3"); // Preload sound
 
 const Timestored = localStorage.getItem("eggTime"); // get time that was previously stored when choosing the egg
 const minutes = parseInt(Timestored, 10); // change time string in dataset(time) to integer
-
 
 let seconds = minutes * 60;
 
