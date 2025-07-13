@@ -4,6 +4,6 @@ function menuPage() {
 }
 
 const startBtn = document.querySelector(".start");
-startBtn.addEventListener("click", menuPage);
-
-
+if (startBtn) {
+  startBtn.addEventListener("click", menuPage);
+}
