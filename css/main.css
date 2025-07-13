@@ -118,13 +118,13 @@ ol {
 .egg-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 5em;
+  gap: 3em;
   margin-bottom: 3em;
   text-align: center;
   color: #333;
   font-size: 14px;
   font-weight: bold;
-  padding: 0 3em;
+  padding: 0 1em;
 }
 
 .app__timer-subtitle {
@@ -142,6 +142,10 @@ ol {
 
 .egg-option {
   cursor: pointer;
+}
+.egg-option:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
 }
 
 .app__timer-display {
