@@ -2,6 +2,7 @@
 // Source: https://freesound.org/s/428221/
 // License: Attribution 4.0 International (CC BY 4.0)
 
+
 const displayTimer = document.querySelector(".app__timer-display"); // display countdown time
 const timesUp = document.querySelector(".app__timer-subtitle"); // will display back to menu button after time is up
 const alarmSound = new Audio("../assets/alarm-sound.wav");
@@ -11,7 +12,17 @@ const minutes = parseInt(Timestored, 10); // change time string in dataset(time)
 
 let seconds = minutes * 60;
 
+// 👇 Immediately display initial countdown before interval starts
+const initialMin = Math.floor(seconds / 60);
+const initialSec = seconds % 60;
+displayTimer.textContent = `${initialMin}:${initialSec
+  .toString()
+  .padStart(2, "0")}`;
+
+// Start countdown
 const countdown = setInterval(() => {
+  seconds--;
+
   if (seconds <= 0) {
     clearInterval(countdown);
     timesUp.innerHTML = `Your egg is done.<br> Enjoy!`;
@@ -28,13 +39,10 @@ const countdown = setInterval(() => {
         window.location.href = "index.html";
       });
     }
-    return; // Important: stop execution here after timer ends
+    return;
   }
-
-  seconds--;
 
   const min = Math.floor(seconds / 60);
   const sec = seconds % 60;
-
   displayTimer.textContent = `${min}:${sec.toString().padStart(2, "0")}`;
 }, 1000);
