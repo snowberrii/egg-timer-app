@@ -2,65 +2,43 @@
 // Source: https://freesound.org/s/428221/
 // License: Attribution 4.0 International (CC BY 4.0)
 
-const displayTimer = document.querySelector(".app__timer-display"); // display countdown time
-const timesUp = document.querySelector(".app__timer-subtitle"); // will display back to menu button after time is up
-
+const displayTimer = document.querySelector(".app__timer-display");
+const timesUp = document.querySelector(".app__timer-subtitle");
 const alarmSound = new Audio("../assets/alarm-sound.mp3");
-// Only play if previously unlocked
-const playAlarm = () => {
-  const allow = sessionStorage.getItem("allowSound");
-  if (allow === "true") {
-    alarmSound.play().catch((err) => {
-      console.warn("Audio play failed on iOS:", err);
-    });
-  } else {
-    console.warn("Audio was not unlocked by user interaction.");
-  }
-};
 
-const Timestored = localStorage.getItem("eggTime"); // get time that was previously stored when choosing the egg
-const minutes = parseInt(Timestored, 10); // change time string in dataset(time) to integer
-
-let seconds = minutes * 60;
-
-// 👇 Immediately display initial countdown before interval starts
-const initialMin = Math.floor(seconds / 60);
-const initialSec = seconds % 60;
-displayTimer.textContent = `${initialMin}:${initialSec
-  .toString()
-  .padStart(2, "0")}`;
-
-// Try playing, fallback if blocked
+// ✅ Only call this once — and using correct key
 function playAlarm() {
-  const isUnlocked = sessionStorage.getItem("audioUnlocked");
-
-  // iOS or other browsers with restrictions
-  if (isUnlocked === "true") {
+  const allowSound = sessionStorage.getItem("allowSound");
+  if (allowSound === "true") {
     alarmSound.play().catch((err) => {
-      console.warn("Audio blocked:", err);
+      console.warn("Audio play blocked:", err);
     });
   } else {
-    // Attempt anyway (desktop should allow it)
-    alarmSound.play().catch((err) => {
-      console.warn("Fallback audio failed:", err);
-    });
+    console.warn("Audio not allowed on this device/session.");
   }
 }
 
-// Start countdown
+const storedTime = localStorage.getItem("eggTime");
+const minutes = parseInt(storedTime, 10);
+let seconds = minutes * 60;
+
+// ✅ Show timer right away
+displayTimer.textContent = `${minutes}:00`;
+
 const countdown = setInterval(() => {
   seconds--;
 
   if (seconds <= 0) {
     clearInterval(countdown);
+
     timesUp.innerHTML = `Your egg is done.<br> Enjoy!`;
     displayTimer.innerHTML = `<button class="start-over-btn">Start Over</button>`;
 
     playAlarm();
 
-    const backToMenuBtn = document.querySelector(".back-to-menu-btn");
-    if (backToMenuBtn) {
-      backToMenuBtn.addEventListener("click", () => {
+    const restartBtn = document.querySelector(".start-over-btn");
+    if (restartBtn) {
+      restartBtn.addEventListener("click", () => {
         alarmSound.pause();
         alarmSound.currentTime = 0;
         window.location.href = "index.html";

@@ -9,20 +9,24 @@ if (goBackBtn) {
 }
 
 // ----- * Direct to Countdown Timer after Choosing Egg option * ----- //
-const alarmSound = new Audio("../assets/alarm-sound.mp3"); // Preload sound for timer page
-
 const eggOptions = document.querySelectorAll(".egg-option");
 
 eggOptions.forEach((option) => {
   option.addEventListener("click", () => {
-    // 🔓 Required on iPhone: trigger audio in direct response to user interaction
-    alarmSound.play().then(() => {
-      alarmSound.pause();
-      alarmSound.currentTime = 0;
-      sessionStorage.setItem("allowSound", "true"); // flag for timer page
-    });
-
     const timeInMinutes = option.dataset.minutes;
+
+    // Prime audio for iOS
+    const audio = new Audio("assets/alarm-sound.mp3");
+    audio
+      .play()
+      .then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+        sessionStorage.setItem("allowSound", "true");
+      })
+      .catch(() => {
+        sessionStorage.setItem("allowSound", "false");
+      });
 
     if (timeInMinutes) {
       localStorage.setItem("eggTime", timeInMinutes);
