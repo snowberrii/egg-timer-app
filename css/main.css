@@ -54,7 +54,7 @@ body {
 .app__title {
   text-align: center;
   font-size: 50px;
-  margin-bottom: 30px;
+  margin: 0.5em 0;
   font-family: "Rammetto One", sans-serif;
 }
 
@@ -131,7 +131,7 @@ ol {
   text-align: center;
   font-size: 28px;
   font-family: "Rammetto One", sans-serif;
-  margin: 2em;
+  margin: 2em 1em;
 }
 
 .app__countdown-timer {

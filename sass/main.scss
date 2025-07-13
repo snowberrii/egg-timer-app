@@ -58,7 +58,7 @@ body {
 .app__title {
   text-align: center;
   font-size: 50px;
-  margin-bottom: 30px;
+  margin: 0.5em 0;
   font-family: $font-title;
 }
 
@@ -108,7 +108,7 @@ ol {
 // ----- * TIMER PAGE * ----- //
 .app__timer-subtitle {
   @include app-subtitle-style(28px);
-  margin: 2em;
+  margin: 2em 1em;
 }
 
 .app__countdown-timer {
